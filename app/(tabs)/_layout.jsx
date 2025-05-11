@@ -116,27 +116,34 @@
 
 // export default TabLayout;
 
-import { Redirect, Tabs } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import { Image, Text, View } from 'react-native';
+import { Redirect, Tabs } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import { Image, Text, View } from "react-native";
 import { Loader } from "../../components/index.js";
 import { icons } from "../../constants";
-import { useGlobalContext } from '../../context/GlobalProvider.js';
+import { useGlobalContext } from "../../context/GlobalProvider.js";
 
 const TabIcon = ({ icon, color, name, focused }) => {
   return (
-    <View style={{ alignItems: 'center', justifyContent: 'center', paddingTop: 8 }}>
+    <View
+      style={{
+        alignItems: "center",
+        justifyContent: "center",
+        paddingVertical: 6,
+      }}
+    >
       <Image
         source={icon}
         resizeMode="contain"
         tintColor={color}
-        style={{ width: 24, height: 24, marginBottom: 4 }}
+        style={{ width: 24, height: 24 }}
       />
       <Text
         style={{
           color: color,
           fontSize: 12,
-          fontWeight: focused ? '600' : '400',
+          fontWeight: focused ? "600" : "400",
+          marginTop: 4, // space between icon and text
         }}
       >
         {name}
@@ -161,8 +168,9 @@ const TabLayout = () => {
             backgroundColor: "#161622",
             borderTopWidth: 1,
             borderTopColor: "#232533",
-            height: 75, // Increased height
-            paddingBottom: 10, // Give more space to prevent cutoff
+            height: 85, // KEY CHANGE: increase height
+            paddingBottom: 10, // bottom padding
+            paddingTop: 5, // top padding to center content
           },
         }}
       >
@@ -172,7 +180,12 @@ const TabLayout = () => {
             title: "Home",
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
-              <TabIcon icon={icons.home} color={color} name="Home" focused={focused} />
+              <TabIcon
+                icon={icons.home}
+                color={color}
+                name="Home"
+                focused={focused}
+              />
             ),
           }}
         />
@@ -182,7 +195,12 @@ const TabLayout = () => {
             title: "Create",
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
-              <TabIcon icon={icons.upload} color={color} name="Create" focused={focused} />
+              <TabIcon
+                icon={icons.upload}
+                color={color}
+                name="Create"
+                focused={focused}
+              />
             ),
           }}
         />
@@ -192,7 +210,12 @@ const TabLayout = () => {
             title: "Profile",
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
-              <TabIcon icon={icons.profile} color={color} name="Profile" focused={focused} />
+              <TabIcon
+                icon={icons.profile}
+                color={color}
+                name="Profile"
+                focused={focused}
+              />
             ),
           }}
         />
