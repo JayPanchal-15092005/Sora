@@ -119,6 +119,7 @@
 import { Redirect, Tabs } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { Image, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { Loader } from "../../components/index.js";
 import { icons } from "../../constants";
 import { useGlobalContext } from "../../context/GlobalProvider.js";
@@ -129,7 +130,7 @@ const TabIcon = ({ icon, color, name, focused }) => {
       style={{
         alignItems: "center",
         justifyContent: "center",
-        paddingVertical: 6,
+        paddingTop: 8,
       }}
     >
       <Image
@@ -140,10 +141,10 @@ const TabIcon = ({ icon, color, name, focused }) => {
       />
       <Text
         style={{
-          color: color,
+          color,
           fontSize: 12,
           fontWeight: focused ? "600" : "400",
-          marginTop: 4, // space between icon and text
+          marginTop: 3,
         }}
       >
         {name}
@@ -152,13 +153,14 @@ const TabIcon = ({ icon, color, name, focused }) => {
   );
 };
 
+
 const TabLayout = () => {
   const { loading, isLogged } = useGlobalContext();
 
   if (!loading && !isLogged) return <Redirect href="/sign-in" />;
 
   return (
-    <>
+    <SafeAreaView style={{ flex: 1 }} edges={['bottom']}>
       <Tabs
         screenOptions={{
           tabBarActiveTintColor: "#FFA001",
@@ -169,8 +171,9 @@ const TabLayout = () => {
             borderTopWidth: 1,
             borderTopColor: "#232533",
             height: 85, // KEY CHANGE: increase height
-            paddingBottom: 10, // bottom padding
-            paddingTop: 5, // top padding to center content
+            paddingBottom: 12, // bottom padding
+            paddingTop: 6,   // top padding to center content
+            position: "absolute"
           },
         }}
       >
@@ -223,7 +226,7 @@ const TabLayout = () => {
 
       <Loader isLoading={loading} />
       <StatusBar backgroundColor="#161622" style="light" />
-    </>
+    </SafeAreaView>
   );
 };
 
