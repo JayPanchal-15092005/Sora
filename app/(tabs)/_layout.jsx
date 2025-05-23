@@ -101,4 +101,4 @@ const TabLayout = () => {
   );
 };
 
-export default TabLayout; 
+export default TabLayout;
