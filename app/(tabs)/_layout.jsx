@@ -1,3 +1,12 @@
+import { Redirect, Tabs } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import { Image, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Loader } from "../../components/index.js";
+import { icons } from "../../constants";
+import { useGlobalContext } from "../../context/GlobalProvider.js";
+
+
 const TabIcon = ({ icon, color, name, focused }) => {
   return (
     <View
