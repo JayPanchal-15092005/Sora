@@ -10,22 +10,24 @@ const TabIcon = ({ icon, color, name, focused }) => {
   return (
     <View
       style={{
+        width: 60, // 👈 Give enough width to prevent line break
         alignItems: "center",
         justifyContent: "center",
-        gap: 2, // use gap instead of paddingTop/marginTop
       }}
     >
       <Image
         source={icon}
         resizeMode="contain"
         tintColor={color}
-        style={{ width: 24, height: 24 }}
+        style={{ width: 24, height: 24, marginBottom: 2 }}
       />
       <Text
+        numberOfLines={1} // 👈 Ensures no wrap
         style={{
           color,
           fontSize: 12,
           fontWeight: focused ? "600" : "400",
+          textAlign: "center", // 👈 Centers the text
         }}
       >
         {name}
@@ -35,7 +37,6 @@ const TabIcon = ({ icon, color, name, focused }) => {
 };
 
 const TabLayout = () => {
-  
   const { loading, isLogged } = useGlobalContext();
 
   if (!loading && !isLogged) return <Redirect href="/sign-in" />;
@@ -49,10 +50,10 @@ const TabLayout = () => {
           tabBarShowLabel: false,
           tabBarStyle: {
             backgroundColor: "#161622",
-            borderTopWidth: 0, // ❌ Remove the white line
-            height: 80, // ✅ Adjust height
-            paddingBottom: 10,
-            paddingTop: 10, // Keep it centered vertically
+            borderTopWidth: 0,
+            height: 80,
+            paddingBottom: 8,
+            paddingTop: 8,
             position: "absolute",
           },
         }}
