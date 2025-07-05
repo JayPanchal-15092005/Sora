@@ -8,7 +8,6 @@ import { CustomButton, FormField } from "../../components/index.js";
 import { icons } from "../../constants";
 import { useGlobalContext } from "../../context/GlobalProvider.js";
 import { createVideoPost } from "../../lib/appwrite.js";
-// import * as ImagePicker from "expo-image-picker";
 
 const Create = () => {
 
