@@ -18,7 +18,9 @@
     },
     "android": {
       "permissions": [
-        "INTERNET"
+        "INTERNET",
+        "READ_EXTERNAL_STORAGE",
+        "CAMERA"
       ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
@@ -43,12 +45,13 @@
           "backgroundColor": "#ffffff"
         }
       ],
-      "react-native-video"
+      "react-native-video",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true
     },
-    "extra": {
+    "extra": {  
       "router": {},
       "eas": {
         "projectId": "32fc5a0f-4e7a-438b-acd0-455030c550d2"
